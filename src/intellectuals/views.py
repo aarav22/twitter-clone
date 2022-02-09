@@ -82,6 +82,8 @@ def receive(request):
                     print("User Created", user)
                     username = form.cleaned_data.get('username')
                     user.set_unusable_password()
+                    user = authenticate(request, username=payload["customFieldInputValues"]["username"])
+                    login_main(request, user)
                     messages.success(
                         request, f'Account created for {username}.')
                 else:

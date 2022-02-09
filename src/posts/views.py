@@ -99,7 +99,7 @@ class PostListView(LoginRequiredMixin, ListView):
 
         for aux in data_counter:
             all_users.append(User.objects.filter(pk=aux['author']).first())
-        data['preference'] = Like.objects.all()
+        data['like'] = Like.objects.all()
         data['all_users'] = all_users
         print(all_users, file=sys.stderr)
         return data

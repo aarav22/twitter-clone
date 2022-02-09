@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     #third party
     'crispy_forms',
     'rest_framework',
+    "debug_toolbar",
     
 ]
 
@@ -57,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 AUTHENTICATION_BACKENDS = (
     'intellectuals.auth_backend.PasswordlessAuthBackend',
@@ -92,7 +94,9 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
