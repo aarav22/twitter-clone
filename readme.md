@@ -21,3 +21,7 @@ stormy-lowlands-22713.herokuapp.com (please not that the application is not full
 
 ## Misc:
 - Django's user registration returns 'password mismatch' error even though the error is something else.
+
+## Resources: 
+- Codepen
+- YouTube Django Tutorials
