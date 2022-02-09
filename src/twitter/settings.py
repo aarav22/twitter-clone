@@ -60,6 +60,7 @@ MIDDLEWARE = [
 ]
 AUTHENTICATION_BACKENDS = (
     'intellectuals.auth_backend.PasswordlessAuthBackend',
+    'django.contrib.auth.backends.ModelBackend',
 )
 ROOT_URLCONF = 'twitter.urls'
 

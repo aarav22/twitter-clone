@@ -5,7 +5,7 @@ from .forms import UserForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login as login_main
 from sawo import createTemplate, getContext, verifyToken
 from dotenv import load_dotenv
 import json
@@ -45,7 +45,7 @@ def login(request):
         print("here")
         return redirect('home')
     else:
-        print("REQ: ",request.user)
+        print("REQ: ", request.user)
         setLoaded()
         setPayload(load if loaded < 2 else '')
 
@@ -55,7 +55,7 @@ def login(request):
             "to": "receive"
         }
         context = {"sawo": configuration, "load": load,
-            "title": "Home"}
+                   "title": "Home"}
         return render(request, "login.html", context)
 
 
@@ -69,17 +69,24 @@ def receive(request):
                             "user_id": payload["user_id"], "verification_token": payload["verification_token"]})
         if res.status_code == 200:
             print("SUCCESS")
-            user = authenticate(username=payload["customFieldInputValues"]["username"])
-            # form = UserForm(
-            #     {"username": payload["customFieldInputValues"]["username"], "email": payload["identifier"]})
-            # print(form)
-            # if form.is_valid():
-            print("User Created", user)
-            # form.save()
-            # username = form.cleaned_data.get('username')
-            messages.success(request, f'Account created for {payload["customFieldInputValues"]["username"]}.')
-            # else:
-            #     # print errors
-            #     print(form.error_messages)
-            #     print("User Exists")
-            return redirect('home')
+            if User.objects.filter(username=payload["customFieldInputValues"]["username"]).exists():
+                user = authenticate(request,
+                    username=payload["customFieldInputValues"]["username"])
+                login_main(request, user)
+            else:
+                form = UserForm(
+                    {"username": payload["customFieldInputValues"]["username"], "email": payload["identifier"], "password1": "radpass@123", "password2": "radpass@123"})
+                print(form)
+                if form.is_valid():
+                    user = form.save()
+                    print("User Created", user)
+                    username = form.cleaned_data.get('username')
+                    user.set_unusable_password()
+                    messages.success(
+                        request, f'Account created for {username}.')
+                else:
+                    # print errors
+                    # authenticate(username=payload["customFieldInputValues"]["username"])
+                    print(form.error_messages)
+                    print("User Exists")
+        return redirect('home')
