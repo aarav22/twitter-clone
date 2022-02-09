@@ -1,11 +1,12 @@
 ## Features 
-- Authentication using SAWO.\
-- Like or Unlike tweets.\
-- Create tweets.\
-- Follow other users.\
+- Authentication using SAWO.
+- Like or Unlike tweets.
+- Create tweets.
+- Follow other users.
 
 
 #### Local Deployment
+Used venv
 ```
 py manage.py runserver
 ```
