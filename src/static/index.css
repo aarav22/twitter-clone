@@ -39,7 +39,6 @@ main {
 .landingMain {
     width: 100%;
     min-height: 100vh;
-    background-image: url("/static/assets/bg.png");
     background-repeat: no-repeat;
     background-size: cover;
     overflow-x: hidden;
