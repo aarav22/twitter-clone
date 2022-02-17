@@ -11,9 +11,8 @@ Used venv
 py manage.py runserver
 ```
 
-### Heroku Deployment (Work in Progress)
-stormy-lowlands-22713.herokuapp.com (please not that the application is not full operataional)
-
+### Heroku Deployment
+stormy-lowlands-22713.herokuapp.com 
 ## Feedback on SAWO:
 - the new dashboard is beautiful.
 - the ability to add custom fields helped out in collecting username
