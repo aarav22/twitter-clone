@@ -1,11 +1,12 @@
 ## Features 
-- Authentication using SAWO.\
-- Like or Unlike tweets.\
-- Create tweets.\
-- Follow other users.\
+- Authentication using SAWO.
+- Like or Unlike tweets.
+- Create tweets.
+- Follow other users.
 
 
 #### Local Deployment
+Used venv
 ```
 py manage.py runserver
 ```
@@ -20,3 +21,7 @@ stormy-lowlands-22713.herokuapp.com (please not that the application is not full
 
 ## Misc:
 - Django's user registration returns 'password mismatch' error even though the error is something else.
+
+## Resources: 
+- Codepen
+- YouTube Django Tutorials
