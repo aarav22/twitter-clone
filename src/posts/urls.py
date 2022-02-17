@@ -5,8 +5,7 @@ from .views import (
     FollowsListView,
     FollowersListView,
     UserPostListView,
-    postpreference,
-    post_list)
+    postpreference,)
 from .import views
 
 urlpatterns = [
